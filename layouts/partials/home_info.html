@@ -1,0 +1,7 @@
+{{- with $.Site.Params.homeInfoParams }}
+<article class="home-info" style="margin-bottom: 24px;">
+    <footer class="entry-footer">
+        {{ partial "social_icons.html" $.Site.Params.socialIcons }}
+    </footer>
+</article>
+{{- end -}}
