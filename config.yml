@@ -3,7 +3,7 @@ languageCode: en-us
 title: "Emre Demir"
 theme: "PaperMod"
 
-paginate: 5
+paginate: 3
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
