@@ -65,9 +65,9 @@ menu:
       name: Tags
       url: /tags
       weight: 20
-    - identifier: search
-      name: Search
-      url: /search
+    - identifier: about
+      name: About
+      url: /about
       weight: 30
 
 taxonomies:
