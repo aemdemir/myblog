@@ -1,3 +1,93 @@
 baseURL: http://example.org/
 languageCode: en-us
-title: My New Hugo Site
+title: "Emre Demir"
+theme: "PaperMod"
+
+paginate: 5
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+enableEmoji: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+googleAnalytics: gid
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production
+  
+  title: Emre Demir
+  author: Emre Demir
+  description: "Thoughts and experiences about software and programming by Emre."
+  keywords: [Software, Programming, Go, Golang, Technology, Blog]
+  images: ['profile-photo.jpg']
+
+  defaultTheme: auto
+
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowToc: true
+
+  homeInfoParams:
+    Title: ""
+    Content: ""
+
+  socialIcons:
+    - name: twitter
+      url: "https://twitter.com/emredir_"
+    - name: github
+      url: "https://github.com/emredir"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/emre-demir-04a2a114b"
+
+  assets:
+    favicon: icons/favicon.ico
+    favicon16x16: icons/favicon-16x16.png
+    favicon32x32: icons/favicon-32x32.png
+    apple_touch_icon: icons/apple-touch-icon.png
+    android-chrome: icons/android-chrome-512x512.png
+
+menu:
+  main:
+    - identifier: archive
+      name: Archive
+      url: /archives
+      weight: 10
+    - identifier: tags
+      name: Tags
+      url: /tags
+      weight: 20
+    - identifier: search
+      name: Search
+      url: /search
+      weight: 30
+
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+services:
+  instagram:
+      disableInlineCSS: true
+  twitter:
+      disableInlineCSS: true
