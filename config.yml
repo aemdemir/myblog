@@ -40,6 +40,9 @@ params:
     Title: ""
     Content: ""
 
+  cover:
+    hiddenInList: true
+
   socialIcons:
     - name: twitter
       url: "https://twitter.com/emredir_"
@@ -54,6 +57,7 @@ params:
     favicon32x32: icons/favicon-32x32.png
     apple_touch_icon: icons/apple-touch-icon.png
     android-chrome: icons/android-chrome-512x512.png
+    disableHLJS: true
 
 menu:
   main:
@@ -85,6 +89,10 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+  highlight:
+    codeFences: true
+    lineNos: true
+    style: native
 
 services:
   instagram:
