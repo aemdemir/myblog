@@ -1,19 +1,16 @@
 ---
 title: "Setting Up a Pretty and Minimal macOS Terminal"
 date: 2021-12-29T11:53:23+03:00
-
 tags: ["macos", "terminal", "zsh"]
-
 showtoc: false
-
 cover:
-    image: "setting-up-a-pretty-and-minimal-macos-terminal/cover.png" # image path/url
+    image: "setting-up-a-pretty-and-minimal-macos-terminal/cover.png"
     alt: "a sample look of our terminal"
     caption: "a sample look of our terminal"
-    relative: false # when using page bundles set this to true
+    relative: false
 ---
 
-Using the default terminal is fine, but why not have a better terminal, especially a pretty and minimal alternative? In this guide, we will set up a pretty and minimal terminal with little effort. Our terminal will have a nice look, syntax highlighting, git info, auto-completion and other features just out-of-the-box.
+Using the default terminal is fine, but why not have a better terminal, especially a pretty and minimal alternative? In this guide, we will set up a pretty and minimal terminal with little effort. Our terminal will have a nice look, syntax highlighting, git info, auto-completion and other features just out of the box.
 
 ## Prerequisites
 
@@ -38,7 +35,7 @@ ZSH is already the default shell for macOS. So, probably it's all set. But, let'
 
 ### Step 1: Set a Theme
 
-We will use [**`Dracula`**](https://draculatheme.com/terminal) theme for our Terminal. Just download it and after that click `Terminal - Preferences - Profiles - Import`, then select the `Dracula.terminal` file, and click default.
+We will use [**`Dracula`**](https://draculatheme.com/terminal) theme for our Terminal. Just download it and after that click `Terminal - Preferences - Profiles - Import`, then select the `Dracula.terminal` file, and make it default.
 
 ### Step 2: Basic Terminal Preferences
 
@@ -98,7 +95,7 @@ I like to keep my terminal simple, so I don't need extra styling and hence the r
 - Enable Transient Prompt: No
 - Instant Prompt Mode: Verbose
 
-> If you want to reflect Dracula theme colors to your prompt, use one of the following styles: `Rainbow, Lean → 8 colors or Pure → Original`
+> If you want to reflect Dracula theme colors to your prompt, use one of the following styles: `Rainbow, Lean - 8 colors or Pure - Original`
 
 ### Step 5: Install Zsh Syntax Highlighting
 
@@ -114,6 +111,12 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 > I remove git from plugins since I don't see any extra benefit of it.
 
+### Step 6: Plugins
+
+Oh My Zsh comes with a lot of plugins such as **`aws`** and **`docker`**. You can find more in the **`~/.oh-my-zsh/plugins`** directory. In order to enable them, update the plugins array in the ~/.zshrc file with the plugins you want to use.
+
+> An example plugins array: `plugins=(zsh-syntax-highlighting aws docker)`
+
 ## Uninstallation
 
 Don't you like what we did above? So let's just uninstall then.
@@ -128,7 +131,7 @@ Don't you like what we did above? So let's just uninstall then.
     - Remove cache files: `rm -rf -- "${XDG_CACHE_HOME:-$HOME/.cache}"/p10k-*(N) "${XDG_CACHE_HOME:-$HOME/.cache}"/gitstatus`
 
 - Dracula Theme
-    -  Remove it from the `Terminal - Preferences - Profiles`
+    -  Remove it under the `Terminal - Preferences - Profiles`
 
 ## Wrapping Up
 
