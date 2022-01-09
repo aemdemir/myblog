@@ -3,7 +3,7 @@ languageCode: en-us
 title: "Emre Demir"
 theme: "PaperMod"
 
-paginate: 3
+paginate: 5
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
@@ -24,7 +24,7 @@ params:
   title: Emre Demir
   author: Emre Demir
   description: "Thoughts and experiences about software and programming by Emre."
-  keywords: [Software, Programming, Go, Golang, Technology, Blog]
+  keywords: [software, programming, go, golang, technology, blog]
   images: ['profile-photo.jpg']
 
   defaultTheme: auto
@@ -91,7 +91,7 @@ markup:
       unsafe: true
   highlight:
     codeFences: true
-    lineNos: true
+    lineNos: false
     style: native
 
 services:
