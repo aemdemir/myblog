@@ -11,4 +11,4 @@ searchHidden: true
 
 Hi,
 
-I am Emre Demir and I'm a Software Engineer at [Gram Games](https://gram.gs). I am interested in Backend Development, Go, new technologies and Cinema :clapper:
+I am Emre Demir and I'm a Software Engineer at [Gram Games](https://gram.gs). I am interested in Backend Development, Distributed Systems, Go, Tooling, and Cinema :clapper: Here I will share my thoughts and experiences about software and programming.

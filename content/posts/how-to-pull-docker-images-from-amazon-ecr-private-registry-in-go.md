@@ -182,4 +182,4 @@ func removeImage(ctx context.Context, cli *client.Client, img string) error {
 
 <br/>
 
-Source code can be found on [gist](https://gist.github.com/emredir/3617228b47bd362d8d5da02065d7692e).
+Source code can be found on [gist](https://gist.github.com/aemdemir/3617228b47bd362d8d5da02065d7692e).

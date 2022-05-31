@@ -1,4 +1,4 @@
-baseURL: "https://emredemir.netlify.app"
+baseURL: "https://aemdemir.com"
 languageCode: en-us
 title: "Emre Demir"
 theme: "PaperMod"
@@ -45,11 +45,11 @@ params:
 
   socialIcons:
     - name: twitter
-      url: "https://twitter.com/emredir_"
+      url: "https://twitter.com/aemdemir"
     - name: github
-      url: "https://github.com/emredir"
+      url: "https://github.com/aemdemir"
     - name: linkedin
-      url: "https://www.linkedin.com/in/emre-demir-04a2a114b"
+      url: "https://www.linkedin.com/in/aemdemir"
 
   assets:
     favicon: icons/favicon.ico
