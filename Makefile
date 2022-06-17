@@ -2,7 +2,7 @@
 # Helpers
 #
 
-## help: prints this help message
+## help: print this help message
 .PHONY: help
 help:
 	@echo 'Usage:'
@@ -16,12 +16,12 @@ confirm:
 # Development
 #
 
-## run: runs the server
+## run: run the server
 .PHONY: run
 run:
 	hugo server -D
 
-## posts/new name=$1: creates a new post
+## posts/new name=$1: create a new post
 .PHONY: posts/new
 posts/new:
 	@echo 'Creating a new post ${name}...'
