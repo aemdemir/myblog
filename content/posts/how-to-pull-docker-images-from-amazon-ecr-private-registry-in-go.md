@@ -28,16 +28,15 @@ go get github.com/docker/docker/client
 
 ### AWS in Go
 
-First of all, we have to create a configuration for AWS. Let's wrap that in its own function. Follow [here](https://aws.github.io/aws-sdk-go-v2/docs/getting-started/#get-your-aws-access-keys) for getting AWS access keys. Also, please note that I use **`WithRegion`** and **`WithCredentialsProvider`** functions to customize the default AWS configuration. I do that just for the demonstration, so feel free to remove those lines if you want to stick with the shared AWS configuration in your machine.
+First of all, we have to create a configuration object for AWS client. Let's wrap that in its own function. Follow [here](https://aws.github.io/aws-sdk-go-v2/docs/getting-started/#get-your-aws-access-keys) for obtaining AWS access keys. Also, please note that I use **`WithRegion`** and **`WithCredentialsProvider`** functions to customize the default AWS configuration. I do that just for the demonstration, so feel free to remove those lines if you want to stick with the shared AWS configuration in your machine.
 
-> 1. load the default aws config; ~/.aws/config
-> 2. customize region; this line can be removed if customization is not needed
-> 3. customize credentials; this line can be removed if customization is not needed
+> 1. load the default aws config; config files are located under the ~/.aws folder
+> 2. customize region; remove this line if customization is not needed
+> 3. customize credentials; remove this line if customization is not needed
 
 ```go
-func newAWSConfig(ctx context.Context) (*aws.Config, error) {
-	// #1
-	cfg, err := awsconfig.LoadDefaultConfig(
+func newAWSConfig(ctx context.Context) (aws.Config, error) {
+	cfg, err := awsconfig.LoadDefaultConfig( // #1
 		ctx,
 		awsconfig.WithRegion("<region>"), // #2
 		awsconfig.WithCredentialsProvider( // #3
@@ -46,13 +45,23 @@ func newAWSConfig(ctx context.Context) (*aws.Config, error) {
 				"<secret-access-key>",
 				"")))
 	if err != nil {
-		return nil, fmt.Errorf("failed to load aws config: %w", err)
+		return aws.Config{}, fmt.Errorf("failed to load aws config: %w", err)
 	}
-	return &cfg, nil
+	return cfg, nil
 }
 ```
 
 AWS configuration is done, and now we are ready to interact with the AWS services. Since we are dealing with Amazon ECR, we will create an Amazon ECR client for obtaining the login password to pull docker images.
+
+```go
+cfg, err := newAWSConfig(ctx)
+if err != nil {
+	panic(err)
+}
+cli := ecr.NewFromConfig(cfg)
+```
+
+Now, let's obtain the login password.
 
 > 1. get token 
 > 2. validate token data
@@ -62,9 +71,9 @@ AWS configuration is done, and now we are ready to interact with the AWS service
 > 6. return the second entry of the split for the password
 
 ```go
-func getLoginPassword(ctx context.Context, cli *ecr.Client) (string, error) {
+func getLoginPassword(ctx context.Context, ecr *ecr.Client) (string, error) {
 	// #1
-	tkn, err := cli.GetAuthorizationToken(ctx, nil)
+	tkn, err := ecr.GetAuthorizationToken(ctx, nil)
 	if err != nil {
 		return "", fmt.Errorf("failed to retrieve ecr token: %w", err)
 	}
@@ -82,7 +91,6 @@ func getLoginPassword(ctx context.Context, cli *ecr.Client) (string, error) {
 
 	// #3
 	str := *tkn.AuthorizationData[0].AuthorizationToken
-
 	// #4
 	dec, err := base64.URLEncoding.DecodeString(str)
 	if err != nil {
@@ -90,13 +98,12 @@ func getLoginPassword(ctx context.Context, cli *ecr.Client) (string, error) {
 	}
 
 	// #5
-	sps := strings.Split(string(dec), ":")
-	if len(sps) != 2 {
+	spl := strings.Split(string(dec), ":")
+	if len(spl) != 2 {
 		return "", fmt.Errorf("unexpected ecr token format")
 	}
-
 	// #6
-	return sps[1], nil
+	return spl[1], nil
 }
 ```
 
@@ -140,7 +147,6 @@ func pullImage(ctx context.Context, cli *client.Client, img string, auth types.A
 
 	// #2
 	auths := base64.URLEncoding.EncodeToString(authData)
-
 	// #3
 	out, err := cli.ImagePull(
 		ctx,
@@ -158,7 +164,6 @@ func pullImage(ctx context.Context, cli *client.Client, img string, auth types.A
 	if err != nil {
 		return fmt.Errorf("failed to read image logs: %w", err)
 	}
-
 	return nil
 }
 ```
