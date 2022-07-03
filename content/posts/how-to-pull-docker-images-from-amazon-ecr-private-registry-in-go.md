@@ -1,7 +1,7 @@
 ---
 title: "How to Pull Docker Images from Amazon ECR Private Registry in Go"
 date: 2022-01-09T20:13:03+03:00
-tags: ["go", "docker", "aws"]
+tags: ["go", "golang", "docker", "aws"]
 showtoc: false
 ---
 

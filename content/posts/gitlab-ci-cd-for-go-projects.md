@@ -1,7 +1,7 @@
 ---
 title: "GitLab CI/CD for Go Projects"
 date: 2022-07-03T15:37:51+03:00
-tags: ["go", "gitlab", "ci/cd", "devops"]
+tags: ["go", "golang", "gitlab", "ci/cd", "devops"]
 showtoc: false
 ---
 
